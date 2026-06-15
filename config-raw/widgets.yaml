@@ -2,7 +2,12 @@
 # For configuration options and examples, please see:
 # https://gethomepage.dev/configs/info-widgets/
 
+# - greeting:
+#     text_size: xl
+#     text: Welcome
+
 - logo:
+    icon: openai.svg
     href: http://{{ HOMELAB_ADDRESS }}:3723
     target: _blank
 
@@ -18,7 +23,15 @@
     showSearchSuggestions: true
 
 - datetime:
-  text_size: xl
-  format:
-    timeStyle: short
-    hourCycle: h23
+    href: https://youtube.com/
+    text_size: xl
+    format:
+      timeStyle: short
+      hourCycle: h23
+
+- openmeteo:
+    label: Current
+    latitude: {{ LOCATION_LATITUDE }}
+    longitude: {{ LOCATION_LONGITUDE }}
+    cache: 5
+

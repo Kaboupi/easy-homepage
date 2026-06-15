@@ -12,7 +12,7 @@
     - Grafana:
         icon: grafana.svg
         href: http://{{ HOMELAB_ADDRESS }}:3000/
-        description: Дашборд Grafana на сервере
+        description: Grafana на локальном сервере
         widget:
           type: grafana
           url: http://{{ HOMELAB_ADDRESS }}:3000
@@ -22,7 +22,7 @@
     - Portainer:
         icon: portainer.svg
         href: http://{{ HOMELAB_ADDRESS }}:9000/
-        description: Portainer
+        description: Portainer на локальном сервере
         widget:
           type: portainer
           url: https://{{ HOMELAB_ADDRESS }}:9443
@@ -32,7 +32,7 @@
     - Tailscale:
         icon: tailscale.svg
         href: https://remote.routerich.ru/devices
-        description: Remote RR
+        description: Управление Tailscale подключениями
         # widget:
         #   type: tailscale
         #   address: https://remote.routerich.ru/

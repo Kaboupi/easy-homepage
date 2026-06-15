@@ -6,32 +6,39 @@
 
   - ChatGPT:
     - abbr: GPT
+      icon: chatgpt.svg
       href: https://chatgpt.com/
 
   - Gemini:
     - abbr: GMN
+      icon: google-gemini.svg
       href: https://gemini.google.com/
 
   - DeepSeek:
     - abbr: DSK
+      icon: deepseek.svg
       href: https://deepseek.com/
 
   - SYNTX:
     - abbr: STX
+      icon: syntx.csv
       href: https://syntx.ai/
 
 - Работа:
 
   - Gmail:
     - abbr: GML
+      icon: gmail.svg
       href: https://gmail.com/
 
 - Развлечения:
 
   - YouTube:
     - abbr: YT
+      icon: youtube.svg
       href: https://youtube.com/
 
   - Яндекс.Музыка:
     - abbr: ЯМ
+      icon: https://yastatic.net/s3/doc-binary/src/mediaservices/yandex_music_icon_ru_whitebg.svg
       href: https://music.yandex.ru/
