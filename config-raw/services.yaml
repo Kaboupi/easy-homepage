@@ -7,13 +7,6 @@
           view: monthly
           showTime: true
           timezone: {{ TIMEZONE }}
-    # - Docker:
-    #     #widget:
-    #     href: http://localhost/
-    #     description: Test container
-    #     server: my-server
-    #     container: homepage
-    #
 
 - Local services:
 
@@ -23,6 +16,7 @@
         href: http://{{ HOMELAB_ADDRESS }}:3333/
         siteMonitor: http://{{ HOMELAB_ADDRESS }}:3333/
         server: {{ DOCKER_NAME }}
+        showStats: true
         container: vert
 
     - Grafana:
