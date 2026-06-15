@@ -1,5 +1,6 @@
+PYTHON_VERSION = python3
 VENV = venv
-VENV_PYTHON = $(VENV)/bin/python
+VENV_PYTHON = $(VENV)/bin/$(PYTHON_VERSION)
 
 .DEFAULT_GOAL := help
 
@@ -15,16 +16,19 @@ help:
 venv: $(VENV)/.infrastructure_done
 
 $(VENV)/.infrastructure_done: gen/requirements.txt
-	@echo "=== Создание виртуального окружения и установка зависимостей ==="
-	python -m venv $(VENV)
+	@echo "=> Creating venv and dependencies"
+	$(PYTHON_VERSION) -m venv $(VENV)
+	@echo "=> Created venv"
 	$(VENV_PYTHON) -m pip install -r gen/requirements.txt
+	@echo "=> Installing requirements"
 	@touch $(VENV)/.infrastructure_done
+	@echo "=> Finish"
 
 run: venv
-	@echo "=== Start config gen ==="
+	@echo "=> Start config gen"
 	@$(VENV_PYTHON) gen/main.py
 
 clean:
-	@echo "=== Start venv cleanup ==="
+	@echo "=> Start venv cleanup"
 	rm -rf $(VENV)
-	@echo "Cleaned."
+	@echo "=> Cleaned"

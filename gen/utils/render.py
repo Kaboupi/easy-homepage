@@ -1,10 +1,15 @@
 import os
 import sys
 from pathlib import Path
+
 from dotenv import load_dotenv
 from jinja2 import Environment, BaseLoader, TemplateError
+from loguru import logger
 
 load_dotenv(override=True)
+
+logger.remove()
+logger.add(sys.stderr, level=os.environ.get("LOG_LEVEL", "INFO"))
 
 
 def render_templates(
@@ -12,25 +17,26 @@ def render_templates(
     out_dir: str | Path,
 ):
     if not raw_dir.exists():
-        print(f"[Ошибка] Папка {raw_dir} не найдена!")
+        logger.error(f"Directory `{raw_dir}` not found!")
         sys.exit(1)
 
-    print(f"=== Начало генерации конфигов из {raw_dir.name} ===")
+    logger.info(f"Start to render configs from `{raw_dir.name}`")
 
     jinja_env = Environment(loader=BaseLoader())
-
     context = dict(os.environ)
 
     for raw_file_path in raw_dir.rglob("*"):
+
         if not raw_file_path.is_file():
             continue
 
         relative_path = raw_file_path.relative_to(raw_dir)
         output_file_path = out_dir / relative_path
 
-        print(f"Обработка: {relative_path} -> ", end="")
+        logger.debug(f"Render: {relative_path} -> ", end="")
 
         try:
+
             with open(raw_file_path, "r", encoding="utf-8") as f:
                 template_content = f.read()
 
@@ -42,12 +48,12 @@ def render_templates(
             with open(output_file_path, "w", encoding="utf-8") as f:
                 f.write(rendered_content)
 
-            print("Успешно")
+            logger.debug("Success")
 
         except TemplateError as e:
-            print(f"ОШИБКА JINJA2 ({e})")
+            logger.error(f"Jinja2 error encountered: ({e})")
         except Exception as e:
-            print(f"СИСТЕМНАЯ ОШИБКА ({e})")
+            logger.exception(f"System error encountered: ({e})")
 
-    print("=== Генерация успешно завершена ===")
+    logger.success("Render complete!")
 
