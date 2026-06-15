@@ -2,10 +2,19 @@
 # For configuration options and examples, please see:
 # https://gethomepage.dev/configs/services/
 
-- Сервисы:
+- Виджеты:
+    - Календарь:
+        widget:
+          type: calendar
+          firstDayInWeek: monday
+          view: monthly
+          showTime: true
+          timezone: Europe/Moscow
+
+- Локальные сервисы:
 
     - VERT.sh:
-        icon: https://github.com/VERT-sh/VERT/blob/main/static/favicon.png?raw=true
+        icon: https://cdn.jsdelivr.net/gh/selfhst/icons/svg/vert.svg
         href: http://{{ HOMELAB_ADDRESS }}:3333/
         description: Конвертация файлов
 

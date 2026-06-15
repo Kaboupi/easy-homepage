@@ -7,7 +7,7 @@
 #     text: Welcome
 
 - logo:
-    icon: openai.svg
+    icon: arch-linux.svg
     href: http://{{ HOMELAB_ADDRESS }}:3723
     target: _blank
 
