@@ -13,54 +13,76 @@
     - VERT.sh:
         icon: https://cdn.jsdelivr.net/gh/selfhst/icons/svg/vert.svg
         description: File convert
-        href: http://{{ HOMELAB_ADDRESS }}:3333/
-        siteMonitor: http://{{ HOMELAB_ADDRESS }}:3333/
+        href: http://{{ HOMELAB_ADDRESS }}:{{ VERT_PORT }}/
+        siteMonitor: http://{{ HOMELAB_ADDRESS }}:{{ VERT_PORT }}/
         server: {{ DOCKER_NAME }}
         showStats: true
-        container: vert
+        container: {{ VERT_NAME }}
+
+    - IT-Tools:
+        icon: it-tools.svg
+        description: Most used IT-Tools
+        href: http://{{ HOMELAB_ADDRESS }}:{{ ITTOOLS_PORT }}/
+        siteMonitor: http://{{ HOMELAB_ADDRESS }}:{{ ITTOOLS_PORT }}/
+        server: {{ DOCKER_NAME }}
+        showStats: true
+        container: {{ ITTOOLS_NAME }}
 
     - Grafana:
         icon: grafana.svg
         description: Grafana on local server
-        href: http://{{ HOMELAB_ADDRESS }}:3000/
-        siteMonitor: http://{{ HOMELAB_ADDRESS }}:3000/
+        href: http://{{ HOMELAB_ADDRESS }}:{{ GRAFANA_PORT }}/
+        siteMonitor: http://{{ HOMELAB_ADDRESS }}:{{ GRAFANA_PORT }}/
         server: {{ DOCKER_NAME }}
         container: {{ GRAFANA_NAME }}
         widget:
           type: grafana
-          url: http://{{ HOMELAB_ADDRESS }}:3000
+          url: http://{{ HOMELAB_ADDRESS }}:{{ GRAFANA_PORT }}
           username: {{ GRAFANA_USER }}
           password: {{ GRAFANA_PASSWORD }}
 
     - Portainer:
         icon: portainer.svg
         description: Portainer on local server
-        href: http://{{ HOMELAB_ADDRESS }}:9000/
+        href: http://{{ HOMELAB_ADDRESS }}:{{ PORTAINER_PORT_UI }}/
+        siteMonitor: http://{{ HOMELAB_ADDRESS }}:{{ PORTAINER_PORT_UI }}/
         server: {{ DOCKER_NAME }}
-        siteMonitor: http://{{ HOMELAB_ADDRESS }}:9000/
         container: {{ PORTAINER_NAME }}
         widget:
           type: portainer
-          url: https://{{ HOMELAB_ADDRESS }}:9443
+          url: https://{{ HOMELAB_ADDRESS }}:{{ PORTAINER_PORT_API }}
           env: {{ PORTAINER_ENV }}
           key: {{ PORTAINER_KEY }}
 
-    - Tailscale:
-        icon: tailscale.svg
-        href: {{ TAILSCALE_HREF }}
-        description: Managing Tailscale connections
-        # widget:
-        #   type: tailscale
-        #   address: {{ TAILSCALE_API }}
-        #   deviceid: deviceid
-        #   key: {{ TAILSCALE_KEY }}
+    # - Tailscale:
+    #     icon: tailscale.svg
+    #     href: {{ TAILSCALE_HREF }}
+    #     description: Managing Tailscale connections
+    #     widget:
+    #       type: tailscale
+    #       address: {{ TAILSCALE_API }}
+    #       deviceid: deviceid
+    #       key: {{ TAILSCALE_KEY }}
 
 - Design:
+
     - VERT.sh:
-        href: http://{{ HOMELAB_ADDRESS }}:3333
+        icon: https://cdn.jsdelivr.net/gh/selfhst/icons/svg/vert.svg
         description: File convert
+        href: http://{{ HOMELAB_ADDRESS }}:{{ VERT_PORT }}/
+        siteMonitor: http://{{ HOMELAB_ADDRESS }}:{{ VERT_PORT }}/
+        server: {{ DOCKER_NAME }}
+        showStats: true
+        container: {{ VERT_NAME }}
 
 - Development:
-    - VERT.sh:
-        href: http://{{ HOMELAB_ADDRESS }}:3333
-        description: File convert
+
+    - Github:
+        icon: github.svg
+        description: github.com
+        href: http://github.com/{{ GITHUB_USERNAME }}
+
+    - Gitlab:
+        icon: gitlab.svg
+        description: gitlab.com
+        href: http://gitlab.com/{{ GITLAB_USERNAME }}

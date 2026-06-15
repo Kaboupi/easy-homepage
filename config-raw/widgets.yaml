@@ -5,7 +5,7 @@
 
 - logo:
     icon: arch-linux.svg
-    href: http://{{ HOMELAB_ADDRESS }}:3723
+    href: http://{{ HOMELAB_ADDRESS }}:{{ HOMEPAGE_PORT }}
     target: _blank
 
 - resources:
