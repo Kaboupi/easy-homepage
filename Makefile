@@ -7,11 +7,13 @@ VENV_PYTHON = $(VENV)/bin/$(PYTHON_VERSION)
 .PHONY: run venv clean help
 
 help:
-	@echo "Available commands:"
-	@echo "- help: help page"
-	@echo "- venv: set up venv"
-	@echo "- run: start config gen"
-	@echo "- clean: clean venv"
+	@echo "Available commands: make [CMD]"
+	@echo "  - help  : Displays this message"
+	@echo "  - venv  : Set up local venv"
+	@echo "  - run   : Render J2 templates with variables from .env"
+	@echo "            and start all the containers"
+	@echo "  - stop  : Stop all the containers"
+	@echo "  - clean : Clean venv and down all the containers"
 
 venv: $(VENV)/.infrastructure_done
 
@@ -31,7 +33,14 @@ run: venv
 	$(VENV_PYTHON) gen/main.py
 	@echo "=> Success!"
 
+stop:
+	@echo "=> Stop docker containers"
+	docker compose stop
+	@echo "=> All containers are stopped!"
+
 clean:
 	@echo "=> Start venv cleanup"
 	rm -rf $(VENV)
-	@echo "=> Cleaned"
+	@echo "=> Start containers cleanup"
+	docker compose down -v --remove-orphans
+	@echo "=> All cleaned"
