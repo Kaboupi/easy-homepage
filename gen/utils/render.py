@@ -26,7 +26,6 @@ def render_templates(
     context = dict(os.environ)
 
     for raw_file_path in raw_dir.rglob("*"):
-
         if not raw_file_path.is_file():
             continue
 
@@ -36,7 +35,6 @@ def render_templates(
         logger.debug(f"Render: {relative_path} -> ", end="")
 
         try:
-
             with open(raw_file_path, "r", encoding="utf-8") as f:
                 template_content = f.read()
 
