@@ -11,4 +11,3 @@ if __name__ == "__main__":
         raw_dir=RAW_DIR,
         out_dir=OUT_DIR,
     )
-
