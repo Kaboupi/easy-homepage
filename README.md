@@ -5,30 +5,36 @@ This repository contains the configuration files required to deploy a
 centralized homepage alongside infrastructure management, monitoring,
 and utility tools.
 
+![Sample image](https://github.com/user-attachments/assets/ff7fe480-83e3-4d43-90ed-73d2d3e9d5c5)
+
 ## Architecture & Services
 
 The stack consists of the following components:
 
-* **Dashboard (`homepage`)**: The primary application portal providing
+* **Dashboard ([`Homepage`](https://github.com/gethomepage/homepage))**: The primary application portal providing
   centralized access to all deployed services and real-time infrastructure status.
-* **Infrastructure Management (`Portainer`)**: Container management interface
+* **Infrastructure Management ([`Portainer`](https://github.com/portainer/portainer))**: Container management interface
   used for monitoring stacks, container lifecycles, and docker volumes.
-* **Monitoring & Analytics (`Grafana`, `Prometheus`, `Node Exporter`)**:
+* **Monitoring & Analytics ([`Grafana`](https://github.com/grafana/grafana), [`Prometheus`](https://github.com/prometheus/prometheus) + [`Node Exporter`](https://github.com/prometheus/node_exporter))**:
   * **Node Exporter**: Collects hardware and OS metrics from the host system.
   * **Prometheus**: Acts as the time-series database to ingest and store metrics.
   * **Grafana**: Visualizes the collected data via infrastructure dashboards.
-* **Development Utilities (`IT-Tools`)**: A collection of aggregated web-based
+* **Development Utilities ([`IT-Tools`](https://github.com/CorentinTh/it-tools))**: A collection of aggregated web-based
   tools for developers and system administrators.
-* **Deployment Automation (`VERT.sh`)**: Scripting/automation tooling
-  utilized for environment verification and deployment lifecycles.
+* **Misc ([`VERT.sh`](https://github.com/VERT-sh/VERT), [`Watchtower`](https://containrrr.dev/watchtower/))**:
+  * **VERT.sh**: File conversion utility that uses WebAssembly
+    to convert files on your server instead of a cloud.
+  * **Watchtower**: A container-based solution for automating
+    Docker container base image updates.
 
 ## Prerequisites
 
 * Docker Engine 20.10+
 * Docker Compose v2.0+
-* Supported Linux-based Host Engine (Ubuntu/Debian recommended)
+* Python 3.11+
+* Make (GNU Make 4.3)
 
-## Deployment
+## Quick setup
 
 1. Clone the repository:
 
@@ -37,14 +43,24 @@ git clone git@github.com:Kaboupi/homepage-config.git
 cd homepage-config
 ```
 
-2. Configure environment variables (copy the template and adjust system IPs/ports):
+2. Configure environment variables (copy the template
+and adjust system IPs/ports in `.env`):
 
 ```bash
 cp .env.example .env
 ```
 
-3. Initialize the stack
+3. Create venv and install dependencies
 
 ```bash
-docker compose up -d
+# Creates Python3 virtual environment
+make venv
+```
+
+4. Initialize the container stack
+
+```bash
+# Renders templates from .env
+# and starts all the containers
+make run
 ```
