@@ -40,6 +40,14 @@ stop:
 	docker compose stop
 	@echo "=> All containers are stopped!"
 
+lint:
+	@echo "=> Start ruff linter checks"
+	ruff check
+
+fix:
+	@echo "=> Start ruff linter fixes"
+	ruff check --fix
+
 clean:
 	@echo "=> Start venv cleanup"
 	rm -rf $(VENV)
