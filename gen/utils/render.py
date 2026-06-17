@@ -2,11 +2,10 @@ import os
 import sys
 from pathlib import Path
 
-from dotenv import load_dotenv
-from jinja2 import Environment, BaseLoader, TemplateError
-from loguru import logger
-
 from config.settings import Settings
+from dotenv import load_dotenv
+from jinja2 import BaseLoader, Environment, TemplateError
+from loguru import logger
 
 load_dotenv(override=True)
 

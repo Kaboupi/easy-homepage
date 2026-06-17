@@ -1,9 +1,8 @@
-from pathlib import Path
 import sys
-
-from loguru import logger
+from pathlib import Path
 
 from config.settings import Settings
+from loguru import logger
 from utils import (
     parse_arguments,
     render_templates,
