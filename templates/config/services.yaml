@@ -78,13 +78,10 @@
 
     - Figma:
         icon: figma.svg
-        description: Figma
+        description: >
+          Cloud-based digital design and collaboration platform
+          primarily used for UX/UI.
         href: https://figma.com/
-
-    - Syntx.ai:
-        icon: figma.svg
-        description: AI-tool for picture generation
-        href: https://syntx.ai/
 
 - Development:
 
