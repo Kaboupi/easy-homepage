@@ -1,0 +1,11 @@
+services:
+
+  vert:
+    container_name: ${VERT_NAME}
+    image: ghcr.io/vert-sh/vert:latest
+    ports:
+      - ${VERT_PORT:-3333}:80
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    restart: unless-stopped
+

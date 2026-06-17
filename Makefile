@@ -30,14 +30,14 @@ $(VENV)/.infrastructure_done: gen/requirements.txt
 
 run: venv
 	@echo "=> Start docker containers"
-	docker compose up -d
+	docker compose --env-file .env --env-file compose/.env.sparky-fitness up -d
 	@echo "=> Start config gen"
 	$(VENV_PYTHON) gen/main.py --log-level $(LOG_LEVEL)
 	@echo "=> Success!"
 
 stop:
 	@echo "=> Stop docker containers"
-	docker compose stop
+	docker compose --env-file .env --env-file compose/.env.sparky-fitness stop
 	@echo "=> All containers are stopped!"
 
 lint: venv
@@ -52,5 +52,5 @@ clean:
 	@echo "=> Start venv cleanup"
 	rm -rf $(VENV)
 	@echo "=> Start containers cleanup"
-	docker compose down -v --remove-orphans
+	docker compose --env-file .env --env-file compose/.env.sparky-fitness down -v --remove-orphans
 	@echo "=> All cleaned"

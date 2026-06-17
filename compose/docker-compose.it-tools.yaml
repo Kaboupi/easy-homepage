@@ -1,0 +1,11 @@
+services:
+
+  it-tools:
+    image: corentinth/it-tools
+    container_name: ${IT_TOOLS_NAME:-it-tools}
+    ports:
+      - ${IT_TOOLS_PORT:-8080}:80
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    restart: unless-stopped
+
