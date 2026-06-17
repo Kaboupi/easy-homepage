@@ -1,5 +1,25 @@
 ---
 - Widgets:
+
+    - Homepage:
+        icon: homepage
+        description: Homepage on local server
+        href: http://{{ HOMELAB_ADDRESS }}:{{ HOMEPAGE_PORT }}/
+        statusStyle: dot
+        server: {{ DOCKER_NAME }}
+        container: {{ HOMEPAGE_NAME }}
+
+    - Watchtower:
+        icon: watchtower.svg
+        description: Watchtower on local server
+        server: {{ DOCKER_NAME }}
+        container: {{ WATCHTOWER_NAME }}
+        statusStyle: dot
+        widget:
+          type: watchtower
+          url: http://{{ HOMELAB_ADDRESS }}:{{ WATCHTOWER_PORT }}/
+          key: {{ WATCHTOWER_KEY }}
+
     - Calendar:
         widget:
           type: calendar
@@ -53,25 +73,6 @@
           url: https://{{ HOMELAB_ADDRESS }}:{{ PORTAINER_PORT_API }}
           env: {{ PORTAINER_ENV }}
           key: {{ PORTAINER_KEY }}
-
-    - Homepage:
-        icon: homepage
-        description: Homepage on local server
-        href: http://{{ HOMELAB_ADDRESS }}:{{ HOMEPAGE_PORT }}/
-        siteMonitor: http://{{ HOMELAB_ADDRESS }}:{{ HOMEPAGE_PORT }}/
-        showStats: true
-        server: {{ DOCKER_NAME }}
-        container: {{ HOMEPAGE_NAME }}
-
-    # - Tailscale:
-    #     icon: tailscale.svg
-    #     href: {{ TAILSCALE_HREF }}
-    #     description: Managing Tailscale connections
-    #     widget:
-    #       type: tailscale
-    #       address: {{ TAILSCALE_API }}
-    #       deviceid: deviceid
-    #       key: {{ TAILSCALE_KEY }}
 
 - Design:
 

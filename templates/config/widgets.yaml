@@ -1,21 +1,25 @@
 ---
-# - greeting:
-#     text_size: xl
-#     text: Welcome
 
 - logo:
-    icon: arch-linux.svg
+    icon: nixos.svg
     href: http://github.com/Kaboupi/homepage-config
     target: _blank
 
-- greeting:
-    text_size: xl
-    href: http://github.com/Kaboupi/homepage-config
-    text: Welcome!
-
+# CPU
 - resources:
     cpu: true
+    cputemp: true
+    units: metric
+    tempmin: 0
+    tempmax: 100
+    network: true
+
+# Memory
+- resources:
     memory: true
+
+# Disk
+- resources:
     disk: /
 
 - search:
@@ -25,13 +29,13 @@
     showSearchSuggestions: true
 
 - datetime:
-    href: https://youtube.com/
     text_size: xl
     format:
       timeStyle: short
       hourCycle: h23
 
 - openmeteo:
+    href: "https://yandex.ru/pogoda/ru/moscow/maps/nowcast"
     label: {{ LOCATION_NAME }}
     latitude: {{ LOCATION_LATITUDE }}
     longitude: {{ LOCATION_LONGITUDE }}
