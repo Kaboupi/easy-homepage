@@ -67,4 +67,4 @@ def render_templates(
         except Exception as e:
             logger.exception(f"System error encountered: ({e})")
 
-    logger.success("Render: Complete!")
+    logger.info("Render: Complete!")
